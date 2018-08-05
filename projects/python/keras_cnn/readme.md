@@ -1,5 +1,5 @@
 # Python 相关的代码
-使用keras作为前端，tensorflow作为后端来训练基于CNN的语音识别的模型
+使用keras作为前端，tensorflow作为后端来训练CNN模型
 
 ## model
 存放模型参数 / tensorflow运行的中间断点数据
@@ -36,13 +36,11 @@
 > 5 对于第k层，如果是压平层，格式就是“Lk，STRIP，D”，其中，STRIP表示压平，D是压平后的维度（这里需要***自行计算***，也可以写“-1”来表示自动推导）  
 > 6 对于第k层，如果是全连接层，格式就是“FC，D，O, func”，其中，FC表示全连接，D是输入维度【也可以写“-1”来表示自动推导】，O是输出维度，func是激活函数  
 > 7. 在每一层的结尾加上"dropout"可以开启训练时候的dropout  
-> **指令数量上限为1023条，参数数量上限为16K个**
+> **指令数量上限为1023条，参数数量上限为64K个**
 
 ## source
 存放源代码
 
-### · show\_training\_samples.py
-> 将训练样本转换成图像文件保存起来，方便论文引用
 
 ### · train\_my\_cnn\_model.py
 > 训练CNN模型参数
@@ -63,13 +61,13 @@
 > 解析网络描述文件，并且生成CNN模型
 
 ### · load\_our\_samples.py
-> 加载CNN训练/测试用的样本，可以选择加入不同SNR的高斯白噪声
+> 加载CNN训练/测试用的样本
 
 ### · estimate\_time\_consuming.py  
 > 根据模型配置文件，评估运算时间/内存的开销
 
 ### · test\_npu\_on\_FPGA.py
-> 通过串口发送NPU指令、配置CNN参数、传输MFCC测试图案到SRAM  
+> 通过串口发送NPU指令、配置CNN参数、传输测试图案到SRAM  
 > 并回读CNN分类结果，与python结果进行比较，验证CNN硬件化的正确性
 
 ## test

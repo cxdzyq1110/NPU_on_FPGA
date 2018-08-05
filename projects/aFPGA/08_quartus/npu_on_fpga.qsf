@@ -1,0 +1,93 @@
+# -------------------------------------------------------------------------- #
+#
+# Copyright (C) 2016  Intel Corporation. All rights reserved.
+# Your use of Intel Corporation's design tools, logic functions 
+# and other software and tools, and its AMPP partner logic 
+# functions, and any output files from any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Intel Program License 
+# Subscription Agreement, the Intel Quartus Prime License Agreement,
+# the Intel MegaCore Function License Agreement, or other 
+# applicable license agreement, including, without limitation, 
+# that your use is for the sole purpose of programming logic 
+# devices manufactured by Intel and sold by Intel or its 
+# authorized distributors.  Please refer to the applicable 
+# agreement for further details.
+#
+# -------------------------------------------------------------------------- #
+#
+# Quartus Prime
+# Version 16.1.0 Build 196 10/24/2016 SJ Standard Edition
+# Date created = 14:23:54  August 05, 2018
+#
+# -------------------------------------------------------------------------- #
+#
+# Notes:
+#
+# 1) The default values for assignments are stored in the file:
+#		npu_on_fpga_assignment_defaults.qdf
+#    If this file doesn't exist, see file:
+#		assignment_defaults.qdf
+#
+# 2) Altera recommends that you do not modify this file. This
+#    file is updated automatically by the Quartus Prime software
+#    and any changes you make may be lost or overwritten.
+#
+# -------------------------------------------------------------------------- #
+
+
+set_global_assignment -name FAMILY "Cyclone IV E"
+set_global_assignment -name DEVICE EP4CE115F29C7
+set_global_assignment -name TOP_LEVEL_ENTITY top
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION 16.1.0
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "14:23:54  AUGUST 05, 2018"
+set_global_assignment -name LAST_QUARTUS_VERSION "16.1.0 Standard Edition"
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
+set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 1
+set_global_assignment -name NOMINAL_CORE_SUPPLY_VOLTAGE 1.2V
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_global_assignment -name SDC_FILE ../04_scripts/npu_on_fpga.sdc
+set_global_assignment -name TCL_SCRIPT_FILE ../04_scripts/pin_assignments.tcl
+set_global_assignment -name VERILOG_FILE ../00_user_logic/top.v
+set_global_assignment -name VERILOG_FILE ../00_user_logic/uart/uart_wr.v
+set_global_assignment -name VERILOG_FILE ../00_user_logic/uart/uart_rtl.v
+set_global_assignment -name INCLUDE_FILE ../00_user_logic/uart/uart_conf.inc
+set_global_assignment -name VERILOG_FILE ../00_user_logic/sram/sram_controller.v
+set_global_assignment -name VERILOG_FILE ../00_user_logic/scfifo/sc_fifo.v
+set_global_assignment -name VERILOG_FILE ../00_user_logic/ram/dpram_2p.v
+set_global_assignment -name VERILOG_FILE ../00_user_logic/parser/cmd_parser.v
+set_global_assignment -name VERILOG_FILE ../00_user_logic/npu/npu_paras_config.v
+set_global_assignment -name VERILOG_FILE ../00_user_logic/npu/npu_inst_join.v
+set_global_assignment -name VERILOG_FILE ../00_user_logic/npu/npu_inst_fsm.v
+set_global_assignment -name VERILOG_FILE ../00_user_logic/npu/npu_inst_excutor.v
+set_global_assignment -name VERILOG_FILE ../00_user_logic/npu/npu_conv_rtl.v
+set_global_assignment -name VERILOG_FILE ../00_user_logic/multiport/mux_ddr_access.v
+set_global_assignment -name VERILOG_FILE ../00_user_logic/dcfifo/sync_dual_clock.v
+set_global_assignment -name VERILOG_FILE ../00_user_logic/dcfifo/gray_enc_1p.v
+set_global_assignment -name VERILOG_FILE ../00_user_logic/dcfifo/gray_dec_1p.v
+set_global_assignment -name VERILOG_FILE ../00_user_logic/dcfifo/dc_fifo.v
+set_global_assignment -name VERILOG_FILE ../00_user_logic/cordic/cordic_tanh_sigm_rtl.v
+set_global_assignment -name VERILOG_FILE ../00_user_logic/cordic/cordic_rot.v
+set_global_assignment -name VERILOG_FILE ../00_user_logic/cordic/cordic_ln.v
+set_global_assignment -name VERILOG_FILE ../00_user_logic/cordic/cordic_exp_rtl.v
+set_global_assignment -name VERILOG_FILE ../00_user_logic/arith/fixed_sdiv.v
+set_global_assignment -name MIF_FILE ../04_scripts/exp_cordic_int_part.mif
+set_global_assignment -name MIF_FILE ../04_scripts/exp_cordic_factor_Kn.mif
+set_global_assignment -name MIF_FILE ../04_scripts/cordic_factor_Kn.mif
+set_global_assignment -name MIF_FILE ../04_scripts/cnn_parameter_rom.mif
+set_global_assignment -name MIF_FILE ../04_scripts/cnn_instruction_rom.mif
+set_global_assignment -name QIP_FILE ../01_altera_ip/npu_paras_rom/npu_paras_rom.qip
+set_global_assignment -name QIP_FILE ../01_altera_ip/npu_inst_ram_bak/npu_inst_ram_bak.qip
+set_global_assignment -name QIP_FILE ../01_altera_ip/npu_inst_ram/npu_inst_ram.qip
+set_global_assignment -name QIP_FILE ../01_altera_ip/cordic_int_part_exp_rom_ip/cordic_int_part_exp_rom_ip.qip
+set_global_assignment -name QIP_FILE ../01_altera_ip/cordic_factor_Kn_rom_ip/cordic_factor_Kn_rom_ip.qip
+set_global_assignment -name QIP_FILE ../01_altera_ip/cordic_factor_exp_rom_ip/cordic_factor_exp_rom_ip.qip
+set_global_assignment -name QIP_FILE ../01_altera_ip/alt_pll_ip_core/alt_pll_ip_core.qip
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
