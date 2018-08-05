@@ -1,0 +1,6 @@
+npu/fp*test.txt
+vad/vad_data.list
+npu/source_sram_dq.list
+
+fft/*.npy
+cordic/*.txt

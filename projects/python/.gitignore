@@ -1,0 +1,4 @@
+*.zip
+keras_cnn/log*
+keras_cnn/weights*
+load_sample/music
