@@ -18,5 +18,11 @@
 ### · python
 > python的项目工程
 
+## documents
+项目开发文档。
+
+## QR
+项目GitHub链接二维码。
+
 
 ## database
