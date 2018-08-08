@@ -1,6 +1,7 @@
 ###########################################################
+# 请根据Quartus的安装路径进行配置
 set QUARTUS_INSTALL_DIR "E:/intelFPGA/16.1/quartus"
-# 定义顶层模块
+# 请根据仿真需要，定义顶层模块
 ########### 测试cordic函数
 #set TOP_LEVEL_NAME "tb_cordic" 
 ########### 测试除法器函数
