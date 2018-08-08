@@ -41,19 +41,28 @@
 > 1.运行CNN训练.bat  
 > 2.保存CNN模型的参数到csv文件.bat  
 > 3.根据csv文件产生NPU指令CNN参数.bat  
-> 4.测试CNN & 生成仿真样本.bat
+> 4.测试CNN & 生成仿真样本.bat  
+> 9.评估模型硬件化后的开销.bat
 
-4.切换目录到 projects\aFPGA\05_modelsim  
-5.修改 run.do 文件中的 #3 行，修改Quartus的安装目录
+4.切换目录到 projects\python\keras_cnn\isa-npu，观察 time\_consuming.txt 文件，里面会评估整个CNN模型运算的时间、指令数量、外存读写次数。
+> <img src="http://chart.googleapis.com/chart?cht=tx&chl= T_{NPU} \approx \frac{ sum\( N_{write },\ N_{read} \) }{Mem\ Bandwidth}" style="border:none;">  
+> [estimated in 50MBps DDR bandwidth]  
+> DDR-READ = 122416, DDR_WRITE=37540,   
+> TOTAL-TIME=12.796480 ms,   
+> TOTAL-PARA-SPACE=61706 (float number)  
+> TOTAL inst number=274  
+
+5.切换目录到 projects\aFPGA\05_modelsim  
+6.修改 run.do 文件中的 #3 行，修改Quartus的安装目录
 > set QUARTUS\_INSTALL\_DIR "E:/intelFPGA/16.1/quartus"  
 
-6.修改 sim_module.bat 脚本 #2 和 #4 行，配置Altera仿真库和Modelsim的路径
+7.修改 sim_module.bat 脚本 #2 和 #4 行，配置Altera仿真库和Modelsim的路径
 > set ALTERA\_SIM\_DIR=E:\modeltech64\_10.4\altera16.1  
 > set MTI\_HOME=E:\modeltech64\_10.4  
 
-7.双击 sim_module.bat 脚本，运行仿真  
-8.等待仿真结束，在spyder中运行 aFPGA\10\_python\cnn\check\_cnn.py 脚本  
-9.观察使用 NPU 运算 CNN的误差
+8.双击 sim_module.bat 脚本，运行仿真  
+9.等待仿真结束，在spyder中运行 aFPGA\10\_python\cnn\check\_cnn.py 脚本  
+10.观察使用 NPU 运算 CNN的误差
     
 ![avatar](./projects/aFPGA/10_python/cnn/npu_vs_python.png)
 
