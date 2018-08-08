@@ -45,7 +45,7 @@
 > 9.评估模型硬件化后的开销.bat
 
 4.切换目录到 projects\python\keras_cnn\isa-npu，观察 time\_consuming.txt 文件，里面会评估整个CNN模型运算的时间、指令数量、外存读写次数。
-> <img src="http://chart.googleapis.com/chart?cht=tx&chl= T_{NPU} \approx \frac{ sum\( N_{write },\ N_{read} \) }{Mem\ Bandwidth}" style="border:none;">  
+> 运算时间 ≈ DDR读写次数 / DDR带宽  
 > [estimated in 50MBps DDR bandwidth]  
 > DDR-READ = 122416, DDR_WRITE=37540,   
 > TOTAL-TIME=12.796480 ms,   
