@@ -7,11 +7,11 @@ set QUARTUS_INSTALL_DIR "E:/intelFPGA/16.1/quartus"
 ########### 测试除法器函数
 #set TOP_LEVEL_NAME "tb_sdiv" 
 ########### 测试NPU 函数
-#set TOP_LEVEL_NAME "tb_npu2" 
+set TOP_LEVEL_NAME "tb_npu2" 
 ########### 测试cmd_parser命令解析器
 #set TOP_LEVEL_NAME "tb_cmd_parser" 
 ########### 测试CNN的运算过程（仅仅验证NPU计算精度）
-set TOP_LEVEL_NAME "tb_cnn" 
+#set TOP_LEVEL_NAME "tb_cnn" 
 
 # 包含qsys仿真目录
 set QSYS_SIMDIR "../"

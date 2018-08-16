@@ -126,6 +126,16 @@ vlog -incr  	   "../02_testbench/tb_cnn.v"
 vlog -incr  	   "../02_testbench/tb_cordic.v" 
 }
 # --------------------
+alias user_com_par {  
+
+vlog -incr  	   "../02_testbench/sram_sim.v"    
+                                                  
+vlog -incr  	   "../02_testbench/tb_sdiv.v"                      
+vlog -incr  	   "../02_testbench/tb_npu2.v"                    
+vlog -incr  	   "../02_testbench/tb_cmd_parser.v"                               
+vlog -incr  	   "../02_testbench/tb_cnn.v" 
+vlog -incr  	   "../02_testbench/tb_cordic.v" 
+}
 
 # ----------------------------------------
 # Elaborate top level design

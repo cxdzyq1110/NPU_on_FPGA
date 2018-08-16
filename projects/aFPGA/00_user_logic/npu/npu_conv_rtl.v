@@ -104,9 +104,9 @@ reg				[DATA_WIDTH-1:0]	kernel_datax;			// 读取到的卷积核数据
 reg									kernel_data_validx;		// 读取卷积核数据有效
 //
 reg		signed	[DATA_WIDTH-1:0]	kernel_q	[0:Ksz-1];	// 卷积核里面的数据
-wire	signed	[DATA_WIDTH-1:0]	kernel_qs	[0:Ksz-1];	// 卷积核里面的数据
+//wire	signed	[DATA_WIDTH-1:0]	kernel_qs	[0:Ksz-1];	// 卷积核里面的数据
 reg		signed	[DATA_WIDTH-1:0]	field_q		[0:Ksz-1];	// 卷积域里面的数据
-wire	signed	[DATA_WIDTH-1:0]	field_qs	[0:Ksz-1];	// 卷积域里面的数据
+//wire	signed	[DATA_WIDTH-1:0]	field_qs	[0:Ksz-1];	// 卷积域里面的数据
 reg									field_q_en;					
 reg				[DATA_WIDTH-1:0]	field_con_idx[0:Km-1];	// 互联网络
 //wire			[DATA_WIDTH-1:0]	field_con_idx_s[0:Km-1];// = field_con_idx[0];
@@ -117,14 +117,14 @@ reg									field_data_valid	;	// 数据源有效
 reg		signed	[DATA_WIDTH-1:0]	field_mult	[0:Ksz-1];	// 点对点乘法	
 reg		signed	[2*DATA_WIDTH-1:0]	field_mults	[0:Ksz-1];	// 点对点乘法	
 reg									field_zero	[0:Ksz-1];	// 点对点乘法	==0
-wire	signed	[DATA_WIDTH-1:0]	field_mult_s[0:Ksz-1];	// 点对点乘法	
+//wire	signed	[DATA_WIDTH-1:0]	field_mult_s[0:Ksz-1];	// 点对点乘法	
 reg									field_mult_en;		
 reg									field_mults_en;		
 // 求和
 reg		signed	[DATA_WIDTH-1:0]	ATnode 	  [0:ATsize-1];	// 加法树	
-wire	signed	[DATA_WIDTH-1:0]	ATnodes	  [0:ATsize-1];	// 加法树	
+//wire	signed	[DATA_WIDTH-1:0]	ATnodes	  [0:ATsize-1];	// 加法树	
 reg									ATnode_en [0:ATlayer-1];// 加法树节点数据有效使能
-wire								ATnode_ens[0:ATlayer-1];// 加法树节点数据有效使能
+//wire								ATnode_ens[0:ATlayer-1];// 加法树节点数据有效使能
 // 
 reg				[DATA_WIDTH-1:0]	ConvResRow;				// 卷积结果的行计数
 reg				[DATA_WIDTH-1:0]	ConvResCol;				// 卷积结果的列计数
@@ -255,7 +255,7 @@ generate
 					kernel_q[ki*Kn+kj] 			<= kernel_datax;
 			end	
 			//
-			assign	kernel_qs[ki*Kn+kj]			= kernel_q[ki*Kn+kj];
+			//assign	kernel_qs[ki*Kn+kj]			= kernel_q[ki*Kn+kj];
 		end
 	end
 endgenerate
@@ -397,7 +397,7 @@ generate
 					end
 				end
 				//
-				assign		field_qs[convi*Kn+convj] = field_q[convi*Kn+convj];
+				//assign		field_qs[convi*Kn+convj] = field_q[convi*Kn+convj];
 			end
 		end
 	end
@@ -423,7 +423,7 @@ generate
 			field_mult[pts] <= ( field_zero[pts] == 1'B1 )? DATA_ZERO : field_mults[pts][DATA_WIDTH+FRAC_WIDTH-1:FRAC_WIDTH];
 		end
 		// 调试用
-		assign	field_mult_s[pts] = field_mult[pts];
+		//assign	field_mult_s[pts] = field_mult[pts];
 	end
 endgenerate
 
@@ -440,7 +440,7 @@ generate
 	for ( at_layer = 0; at_layer < ATlayer; at_layer = at_layer + 1 )
 	begin : ATtree
 		//
-		assign	ATnode_ens[ at_layer ] = ATnode_en[ at_layer ];
+		//assign	ATnode_ens[ at_layer ] = ATnode_en[ at_layer ];
 		// 对于第0层，输入点对点乘法结果
 		if ( at_layer == 0 )
 		begin
@@ -461,7 +461,7 @@ generate
 						ATnode[ at_node_idx ] <= field_mult[ at_node_idx ];
 				end
 			
-				assign	ATnodes[ at_node_idx ] = ATnode[ at_node_idx ];
+				//assign	ATnodes[ at_node_idx ] = ATnode[ at_node_idx ];
 				
 			end
 			
@@ -498,7 +498,7 @@ generate
 					end
 				end
 				
-				assign	ATnodes[ ATsize - ( ATsize >> ( at_layer )) + at_node_idx ] = ATnode[ ATsize - ( ATsize >> ( at_layer )) + at_node_idx ];
+				//assign	ATnodes[ ATsize - ( ATsize >> ( at_layer )) + at_node_idx ] = ATnode[ ATsize - ( ATsize >> ( at_layer )) + at_node_idx ];
 				
 			end
 			
